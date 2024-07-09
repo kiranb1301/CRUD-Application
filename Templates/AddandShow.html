@@ -1,0 +1,51 @@
+{% extends "Base.html" %} 
+{% block content %}
+<div class="row">
+    <div class="col-sm-4"> 
+       <h4 class='text-center alert alert-info'> Register Here </h4>   
+        <form method="POST"> 
+            {% csrf_token %} 
+                {{form.as_p}}  
+                <button type="submit" class='btn btn-success'> submit </button>
+        </form>  
+    </div> 
+    <div class="col-sm-7 offset-1"> 
+        <h4 class='text-center alert alert-info'> Student Information </h4>  
+        {% if Stud_data %} 
+                <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Mobile</th> 
+                    <th scope='col'> Action </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for st in Stud_data %} 
+                  <tr> 
+                    <th scope='row'>{{st.id}} </th> 
+                    <td>{{st.Name}} </td> 
+                    <td>{{st.Email}} </td> 
+                    <td>{{st.Mobile}} </td> 
+                    <td>
+                     <a href='{% url "Update_Data" st.id %}' class='btn btn-warning btn-sm'> Edit </a>
+                    <!-- <a href='#' class='btn btn-danger btn-sm'> Delete </a> --> 
+                    <form action="{% url 'Delete_Data' st.id %}"method="POST" class="d-inline">
+                        {% csrf_token %}
+                            <input type="submit" class= "btn btn-danger" value="Delete">
+                    </form>
+                  </tr> 
+                  {% endfor %}
+                </tbody>
+              </table>
+        {% else %} 
+            <h4 class='text-center alert alert-warning'> No Records </h4> 
+        {% endif %}
+    </div>
+</div>
+ {% endblock content %} 
+ 
+ 
+     

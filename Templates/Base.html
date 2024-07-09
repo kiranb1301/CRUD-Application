@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <title>User Profile</title>
+        <link rel="icon" href="https://img.icons8.com/?size=100&id=pEAInx3HGXxB&format=png&color=000000" type="image/icon type">
+        <link rel="stylesheet" href="{% static 'CSS/bootstrap.css' %}">
+        <!-- Other head content -->
+    </head>
+    <body>
+        <!-- Body content -->
+        {% comment %} <div class="container">
+        {% block content %} {% endcomment %}
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="{% url 'Add_Show' %}"> Profile Management</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'Add_Show' %}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'show_students' %}"> User Data </a></li>
+                    {% if user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Logout</a></li>
+                    {% else %}
+                        <li class="nav-item"><a class="nav-link" href="#">Login</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+        <div class="container">
+            {% block content %}{% endblock %}
+        </div>
+        {% comment %} </div>
+        {% endblock content %} {% endcomment %}
+        <script src="{% static 'JS/jquery.js' %}"></script>
+        <script src="{% static 'JS/popper.js' %}"></script>
+        <script src="{% static 'JS/bootstrap.js' %}"></script>
+    </body>
+</html>

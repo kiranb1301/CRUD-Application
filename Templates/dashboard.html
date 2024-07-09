@@ -1,0 +1,9 @@
+{% extends "Base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<div class="container">
+    <h2>Welcome to the Dashboard</h2>
+    <p>Hello, {{ user.is_authenticated }}!</p>
+    <a href="#" class="btn btn-danger">Logout</a>
+</div>
+{% endblock %}
