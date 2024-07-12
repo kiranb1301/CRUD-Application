@@ -40,3 +40,6 @@ class UserModelForm(forms.ModelForm):
                 raise ValidationError("This password must contain at least one special character.")
         return self.cleaned_data
         
+class LoginForm(forms.Form):
+    email = forms.EmailField() 
+    password = forms.CharField(widget=forms.PasswordInput)

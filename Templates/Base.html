@@ -17,6 +17,7 @@
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item"><a class="nav-link" href="{% url 'Add_Show' %}">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'show_students' %}"> User Data </a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'user_login' %}">LogIn </a></li>
                     {% if user.is_authenticated %}
                         <li class="nav-item"><a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a></li>
                         <li class="nav-item"><a class="nav-link" href="#">Logout</a></li>
